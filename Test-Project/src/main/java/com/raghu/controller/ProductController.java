@@ -35,9 +35,15 @@ public class ProductController {
 		return productService.findAllproducts();
 
 	}
+
 	@GetMapping("{productId}")
 	public Product fetchProduct(@PathVariable long productId) {
 		return productService.fetchProduct(productId);
+	}
+
+	@GetMapping("/categoryName/{name}")
+	public List<Product> fetchProductOnCategoryName(@PathVariable(name = "name") String categoryName) {
+		return productService.findProductOnCategoryName(categoryName);
 	}
 
 }

@@ -20,7 +20,7 @@ public class CategoryService {
 	private CategoryRepository categoryRepository;
 
 	public Category createCategoryInfo(Category category) {
-		log.info("category info :" + category.getCategory_name());
+		log.info("category info :" + category.getName());
 		return categoryRepository.save(category);
 	}
 
@@ -38,7 +38,7 @@ public class CategoryService {
 
 	public Category updateCategory(long catId, Category category) {
 		return categoryRepository.findById(catId).map(cate -> {
-			cate.setCategory_name(category.getCategory_name());
+			cate.setName(category.getName());
 			return categoryRepository.save(cate);
 
 		}).orElseThrow(() -> new ResourceNotFoundException("Category Not Found With Id :" + catId));
